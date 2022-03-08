@@ -22,7 +22,7 @@ export default function ArticleById () {
                     <h5>{article.author}</h5>
                     <p>{article.body}</p>
                     <p>{article.created_at}</p>
-                    <p>{article.votes}</p>
+                    <p>Votes: {article.votes}</p>
                 </article>              
             </ul>    
         </section>

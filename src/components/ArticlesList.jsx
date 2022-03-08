@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 export default function ArticleList () {
     const [articles, setArticles] = useState([]);
-    
+
     const [searchParams] = useSearchParams();
     const topic = searchParams.get("topic")
 
@@ -35,7 +35,7 @@ export default function ArticleList () {
                         <h5>{article.author}</h5>
                         <p>{article.body}</p>
                         <p>{article.created_at}</p>
-                        <p>{article.votes}</p>
+                        <p>Votes: {article.votes}</p>
                     </article>              
                 )
             })}
