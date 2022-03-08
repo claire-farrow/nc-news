@@ -9,3 +9,15 @@ export function fetchArticles () {
         return res.data.articles;
     })
 }
+
+export function fetchTopics () {
+    return newsApi.get("/topics").then((res) => {
+        return res.data.topics;
+    })
+}
+
+export function fetchArticlesByTopic (topic) {
+    return newsApi.get(`/articles?topic=${topic}`).then((res) => {
+        return res.data.articles;
+    })
+}

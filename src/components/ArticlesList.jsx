@@ -1,16 +1,27 @@
 import * as api from "../api";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 
 export default function ArticleList () {
     const [articles, setArticles] = useState([]);
-    
+    const [searchParams] = useSearchParams()
+
+    const topic = searchParams.get("topic")
+
     useEffect(() => {
-        api.fetchArticles().then((articlesFromApi) => {
-            setArticles(articlesFromApi)
-            
-        })
-    }, [])
+        if (topic !== null) {
+            api.fetchArticlesByTopic(topic).then((articlesFromApi) => {
+                setArticles(articlesFromApi)
+            })
+        } else {
+            api.fetchArticles().then((articlesFromApi) => {
+                setArticles(articlesFromApi);
+            })
+        }
+    }, [topic])
+  
+
     
     return (
         <section className="article">
