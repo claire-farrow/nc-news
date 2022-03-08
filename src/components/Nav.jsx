@@ -5,7 +5,8 @@ export default function Nav () {
         <nav className="nav">
             <Link to="/" className="nav-home">
                 Home Page
-                </Link>
+            </Link>
+            
         </nav>
     )
 }
