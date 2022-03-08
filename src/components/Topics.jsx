@@ -15,7 +15,7 @@ export default function Topics () {
         <nav>
             {topics.map((slug) => {
                 return (
-                    <Link key={slug.slug} to={`/articles?topic=${slug.slug}`} className="pa3 pa4-ns">
+                    <Link key={slug.slug} to={`/articles?topic=${slug.slug}`} className="link dim gray f6 f5-ns dib mr3">
                         {slug.slug}
                     </Link>
                 )
