@@ -34,3 +34,9 @@ export function patchArticleWithVotes (article_id, votes) {
     })
 }
 
+export function fetchCommentsByArticleId (article_id) {
+    return newsApi.get(`/articles/${article_id}/comments`).then((res) => {
+        console.log(res.data.comments, "a string")
+        return res.data.comments
+    })
+}
