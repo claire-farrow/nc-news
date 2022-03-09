@@ -27,3 +27,9 @@ export function fetchArticleById (article_id) {
         return res.data.article;
     })
 }
+
+export function patchArticleWithVotes (article_id, votes) {
+    return newsApi.patch(`/articles/${article_id}`, {inc_votes:votes}).then((res) => {
+        return res.data.articles
+    })
+}

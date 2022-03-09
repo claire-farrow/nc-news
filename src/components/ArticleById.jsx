@@ -1,6 +1,8 @@
 import * as api from "../api";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import Votes from "./Votes";
+
 
 export default function ArticleById () {
     const [article, setArticle] = useState([])
@@ -13,7 +15,9 @@ export default function ArticleById () {
         })
     }, [article_id])
 
+    
     return (
+
         <section className="article">
             <ul>
                 <article key={article.article_id} className="article-card">
@@ -22,8 +26,9 @@ export default function ArticleById () {
                     <h5>{article.author}</h5>
                     <p>{article.body}</p>
                     <p>{article.created_at}</p>
-                    <p>Votes: {article.votes}</p>
-                </article>              
+                    <Votes votes={article.votes} article_id={article.article_id}/>
+                </article>  
+            
             </ul>    
         </section>
     )
