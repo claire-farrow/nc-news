@@ -25,7 +25,7 @@ export default function ArticleById () {
                     <h4>{article.topic}</h4>
                     <h5>{article.author}</h5>
                     <p>{article.body}</p>
-                    <Link key={article.article_id} to={`/articles/${article.article_id}/comments`}><p>Make Comment on Article ID: {article.article_id}</p></Link>
+                    <Link key={article.article_id} to={`/articles/${article.article_id}/comments`}><p>Show Comment on Article ID: {article.article_id}</p></Link>
                     <p>{article.created_at}</p>
                     <Votes votes={article.votes} article_id={article.article_id}/>
                 </article>  
