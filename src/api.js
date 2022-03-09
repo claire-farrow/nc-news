@@ -33,3 +33,4 @@ export function patchArticleWithVotes (article_id, votes) {
         return res.data.articles
     })
 }
+
