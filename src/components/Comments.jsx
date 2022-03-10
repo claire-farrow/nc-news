@@ -12,13 +12,14 @@ export default function Comments () {
     useEffect(() => {
         api.fetchCommentsByArticleId(article_id).then((commentsFromApi) => {
             setComments(commentsFromApi)
-            console.log(commentsFromApi)
+            
         })
     }, [article_id])
 
     return (
         <section className="article">
            <ul>
+              
             {comments.map((comment) => {
                 return (
                     <article key={comment.comment_id} className="article-card">

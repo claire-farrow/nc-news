@@ -3,9 +3,12 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import Votes from "./Votes";
 import {Link} from "react-router-dom";
+import PostComment from "./PostComment";
+
 
 export default function ArticleById () {
     const [article, setArticle] = useState([])
+    
 
     const {article_id} = useParams()
 
@@ -20,6 +23,7 @@ export default function ArticleById () {
 
         <section className="article">
             <ul>
+           
                 <article key={article.article_id} className="article-card">
                     <h3>{article.title}</h3>
                     <h4>{article.topic}</h4>
@@ -28,6 +32,7 @@ export default function ArticleById () {
                     <Link key={article.article_id} to={`/articles/${article.article_id}/comments`}><p>Show Comment on Article ID: {article.article_id}</p></Link>
                     <p>{article.created_at}</p>
                     <Votes votes={article.votes} article_id={article.article_id}/>
+                    <PostComment setArticle={setArticle} />
                 </article>  
             
             </ul>    
