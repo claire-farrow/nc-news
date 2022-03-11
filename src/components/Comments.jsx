@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../api";
+import DeleteComment from "./DeleteComment";
+import { UserContext } from "../contexts/UserContexts";
+import { useContext } from "react";
 
 
 export default function Comments () {
+    const {loggedInUser} = useContext(UserContext)
 
     const [comments, setComments] = useState([])
 
@@ -21,6 +25,7 @@ export default function Comments () {
            <ul>
               
             {comments.map((comment) => {
+                
                 return (
                     <article key={comment.comment_id} className="article-card">
                         <p>{comment.article_id}</p>
@@ -29,6 +34,8 @@ export default function Comments () {
                         <p>{comment.body}</p>
                         <p>{comment.votes}</p>
                         <p>{comment.create_at}</p>
+                        {   loggedInUser.username === comment.author ?
+                            <DeleteComment setComments={setComments} comment_id={comment.comment_id}/> : null}
                     </article>              
                 )
             })}

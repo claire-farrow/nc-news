@@ -51,3 +51,7 @@ export function postCommentByArticleId (article_id, body) {
         return res.data.comment
     })
 }
+
+export function deleteCommentByCommentId (comment_id) {
+    return newsApi.delete(`/comments/${comment_id}`)
+}
