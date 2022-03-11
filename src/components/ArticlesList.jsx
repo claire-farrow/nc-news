@@ -3,28 +3,34 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import {Link} from "react-router-dom"
 import Votes from "./Votes";
+import { SortBy } from "./SortBy";
 
 export default function ArticleList () {
     const [articles, setArticles] = useState([]);
-    const [searchParams] = useSearchParams()
+    const [sortBy, setSortBy] = useState("created_at");
+    const [orderBy, setOrderBy] = useState("desc");
 
+    const [searchParams] = useSearchParams()
     const topic = searchParams.get("topic")
 
     useEffect(() => {
-        if (topic !== null) {
-            api.fetchArticlesByTopic(topic).then((articlesFromApi) => {
-                setArticles(articlesFromApi)
-            })
-        } else {
-            api.fetchArticles().then((articlesFromApi) => {
-                setArticles(articlesFromApi);
-            })
-        }
-    }, [topic])
+      
+        api.fetchArticles(topic, sortBy, orderBy).then((articlesFromApi) => {
+            setArticles(articlesFromApi);
+        })
+
+    }, [topic, sortBy, orderBy])
   
 
     
     return (
+        <>
+        <SortBy 
+            setSortBy={setSortBy}
+            selectedSort={sortBy}
+            setOrderBy={setOrderBy}
+            selectedOrder={orderBy}
+            />  
         <section className="article">
             <ul>
             {articles.map((article) => {
@@ -40,7 +46,8 @@ export default function ArticleList () {
                     </article>              
                 )
             })}
-            </ul>    
+            </ul>
         </section>
+        </> 
     )
 }
