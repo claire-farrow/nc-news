@@ -4,12 +4,15 @@ import { useSearchParams } from "react-router-dom";
 import {Link} from "react-router-dom"
 import Votes from "./Votes";
 import { SortBy } from "./SortBy";
+import Collapse from "./Collapse";
 
-export default function ArticleList () {
+
+export default function ArticleList (date) {
     const [articles, setArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [sortBy, setSortBy] = useState("created_at");
     const [orderBy, setOrderBy] = useState("desc");
-
+    
     const [searchParams] = useSearchParams()
     const topic = searchParams.get("topic")
 
@@ -17,13 +20,17 @@ export default function ArticleList () {
       
         api.fetchArticles(topic, sortBy, orderBy).then((articlesFromApi) => {
             setArticles(articlesFromApi);
+            setIsLoading(false);
         })
+        
 
     }, [topic, sortBy, orderBy])
   
 
-    
-    return (
+  
+    return isLoading ? (
+        <h1>loading...</h1>
+    ) :  (
         <>
         <SortBy 
             setSortBy={setSortBy}
@@ -40,7 +47,7 @@ export default function ArticleList () {
                         <Link key={article.article_id} to={`/articles/${article.article_id}`}><h3>{article.title}</h3></Link>
                         <h4>{article.topic}</h4>
                         <h5>{article.author}</h5>
-                        <p>{article.body}</p>
+                        <Collapse><p>{article.body}</p></Collapse>
                         <p>{date}</p>
                         <Votes votes={article.votes} article_id={article.article_id}/>
                     </article>              

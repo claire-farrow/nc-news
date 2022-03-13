@@ -4,14 +4,22 @@ import {Link} from "react-router-dom";
 
 export default function Topics () {
     const [topics, setTopics] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         api.fetchTopics().then((topicsFromApi) => {
             setTopics(topicsFromApi)
+            setIsLoading(false);
         })
+        // .catch((err) => {
+        //     console.dir(err)
+        //     console.log("error")
+        // })
     }, []);
 
-    return (
+    return isLoading ? (
+        <h1>loading...</h1>
+    ) :  (
         <nav>
             {topics.map((slug) => {
                 return (
