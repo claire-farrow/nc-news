@@ -9,6 +9,7 @@ import Comments from "./components/Comments";
 import {Routes, Route} from "react-router-dom";
 import {UserContext} from "./contexts/UserContexts";
 import {useState} from "react";
+import ErrorPage from './components/ErrorPage';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState ({
@@ -31,6 +32,7 @@ function App() {
           <Route path="/articles" element={<ArticleList />}></Route>
           <Route path="/articles/:article_id" element={<ArticleById />}></Route>
           <Route path="/articles/:article_id/comments" element={<Comments />}></Route>
+          <Route path="*" element={<ErrorPage/>}></Route>
         </Routes>
        
       </main>

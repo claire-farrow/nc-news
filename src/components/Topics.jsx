@@ -2,6 +2,7 @@ import * as api from "../api";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
+
 export default function Topics () {
     const [topics, setTopics] = useState([]);
 
@@ -10,6 +11,7 @@ export default function Topics () {
             setTopics(topicsFromApi)
         })
     }, []);
+
 
     return (
         <nav>
