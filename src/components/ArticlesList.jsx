@@ -5,13 +5,14 @@ import {Link} from "react-router-dom"
 import Votes from "./Votes";
 import { SortBy } from "./SortBy";
 import Collapse from "./Collapse";
-
+import ErrorPage from "./ErrorPage";
 
 export default function ArticleList (date) {
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [sortBy, setSortBy] = useState("created_at");
     const [orderBy, setOrderBy] = useState("desc");
+    const [error, setError] = useState(null)
     
     const [searchParams] = useSearchParams()
     const topic = searchParams.get("topic")
@@ -21,12 +22,15 @@ export default function ArticleList (date) {
         api.fetchArticles(topic, sortBy, orderBy).then((articlesFromApi) => {
             setArticles(articlesFromApi);
             setIsLoading(false);
+        }).catch(({response: {data: {msg}}, request: {status}}) => {
+            console.log()
+            setError({status, msg})
         })
         
 
     }, [topic, sortBy, orderBy])
   
-
+    if (error) {return <ErrorPage status={error.status} msg={error.msg} />}
   
     return isLoading ? (
         <h1>loading...</h1>
