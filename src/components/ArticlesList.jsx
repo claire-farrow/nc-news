@@ -42,18 +42,18 @@ export default function ArticleList (date) {
             setOrderBy={setOrderBy}
             selectedOrder={orderBy}
             />  
-        <section className="article">
+        <section className="mw7 center">
             <ul>
             {articles.map((article) => {
                 const date = article.created_at.slice(0, 10)
                 return (
-                    <article key={article.article_id} className="article-card">
-                        <Link key={article.article_id} to={`/articles/${article.article_id}`}><h3>{article.title}</h3></Link>
-                        <h4>{article.topic}</h4>
-                        <h5>{article.author}</h5>
-                        <Collapse><p>{article.body}</p></Collapse>
-                        <p>{date}</p>
-                        <Votes votes={article.votes} article_id={article.article_id}/>
+                    <article key={article.article_id} className="pv4 bt bb b--black-10 ph3 ph0-l">
+                        <Link key={article.article_id} to={`/articles/${article.article_id}`}><h3 className="athelas ph3 ph0-l">{article.title}</h3></Link>
+                        <h4 className="f3 athelas mt0 lh-title">{article.topic}</h4>
+                        <h5 className="f6 lh-copy gray mv0">{article.author}</h5>
+                        <Collapse><p className="f5 f4-l lh-copy athelas">{article.body}</p></Collapse>
+                        <p className="f6 db gray">{date}</p>
+                        <Votes votes={article.votes} article_id={article.article_id} />
                     </article>              
                 )
             })}

@@ -4,7 +4,7 @@
   padding-right: 40px;
 }
 
-.article {
+/* .article {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 10px;
@@ -27,6 +27,6 @@
       flex-direction: column;
       align-items: wrap;
   }
-}
+} */
 
-.topic-links {}
+

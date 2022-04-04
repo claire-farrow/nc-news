@@ -22,18 +22,18 @@ export default function Comments () {
     return isLoading ? (
         <h1>loading...</h1>
     ) :  (
-        <section className="article">
+        <section className="mw7 center">
            <ul>
               
             {comments.map((comment) => {
                 const commentDate = comment.created_at.slice(0, 10)
                 return (
-                    <article key={comment.comment_id} className="article-card">
+                    <article key={comment.comment_id} className="pv4 bt bb b--black-10 ph3 ph0-l">
                         
-                        <p>Author: {comment.author}</p>
-                        <p>Comment: {comment.body}</p>
-                        <p>Votes: {comment.votes}</p>
-                        <p>Date: {commentDate}</p>
+                        <p className="f5 f4-l lh-copy athelas">Author: {comment.author}</p>
+                        <p className="f5 f4-l lh-copy athelas">Comment: {comment.body}</p>
+                        <p className="f5 f4-l lh-copy athelas">Votes: {comment.votes}</p>
+                        <p className="f5 f4-l lh-copy athelas">Date: {commentDate}</p>
                         {   loggedInUser.username === comment.author ?
                             <DeleteComment setComments={setComments} comment_id={comment.comment_id}/> : null}
                     </article>              
