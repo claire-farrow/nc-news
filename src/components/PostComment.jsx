@@ -24,7 +24,7 @@ export default function PostComment () {
         <>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="addComment">Add Comment: </label>
-                <input type="text" id="addComment" value={body.body} onChange={(event) => 
+                <input required="required" type="text" id="addComment" value={body.body} onChange={(event) => 
                     {setBody({username: loggedInUser.username, body: event.target.value})}}></input>
                 <label htmlFor="submit"></label>
                 <button type="submit" id="submit" >Submit</button>

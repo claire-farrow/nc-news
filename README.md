@@ -4,7 +4,7 @@ Using the API I built in my News-backend project I have built a web application 
 
 ## Link to hosted version
 
-https://624ae2086b6aa2009d4460be--teal-croquembouche-531305.netlify.app/
+https://624ae2086b6aa2009d4460be--nc-news-cf.netlify.app/
 
 ## Developer Information
 
